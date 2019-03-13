@@ -1,0 +1,22 @@
+<app-header></app-header>
+<app-menu></app-menu>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Shop Information
+    </h1>   
+    <p class="inline" style="text-align:right"><a [routerLink]="['/shop-info-edit']">Edit</a></p>
+  </section>
+<mat-card>
+  <div >
+      <p class="center"><img src="{{info.imageUrl}}" height="80px;"></p>
+      <p>Name : {{info.name}}</p>
+      <p>Tel : {{info.tel}}</p>
+      <p>Email : {{info.email}}</p>
+      <p>Address : {{info.address}}</p>
+  </div>
+</mat-card>
+</div>
+<app-footer></app-footer>
+<app-setting></app-setting>

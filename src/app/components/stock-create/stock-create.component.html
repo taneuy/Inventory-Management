@@ -1,0 +1,109 @@
+<app-header></app-header>
+<app-menu></app-menu>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <p class="box-title" style="font-size:30px">เพิ่มสินค้า</p>
+      </div>
+      <div class="box-body" style="margin-top:30px">
+        <form class="form-horizontal" method="Post" action="/product/Create">
+
+          <div class="form-group">
+              <label class="col-sm-2 control-label" for="Category">Category</label>
+              <div class="col-sm-10">
+                <select  class="form-control" [(ngModel)]="mProduct.category" name="Category " id="Category" >
+                
+                  <option [ngValue]="category.payload.val().name"  *ngFor="let category of (categories | async)?.slice().reverse();">
+                  {{category.payload.val().name}}
+                </option>
+                </select>
+              </div>
+            </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="Barcode">Barcode</label>
+            <div class="col-sm-10">
+              <input [(ngModel)]="mProduct.barcode" class="form-control" type="text" id="Barcode" name="Barcode" value="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="Name">Name</label>
+            <div class="col-sm-10">
+              <input [(ngModel)]="mProduct.name" class="form-control" type="text" id="Name" name="Name" value="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="Brand">Brand</label>
+            <div class="col-sm-10">
+              <input [(ngModel)]="mProduct.brand" class="form-control" type="text" id="Brand" name="Brand" value="">
+            </div>
+          </div>                   
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="Package">Package</label>
+            <div class="col-sm-10">
+              <input [(ngModel)]="mProduct.package" class="form-control" type="text" id="Package" name="Package" value="">
+            </div>
+          </div> 
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Cost</label>
+            <div class="col-sm-10">
+              <div class="input-group">
+                <input [(ngModel)]="mProduct.cost" class="form-control" type="number" onkeyup="this.value=this.value.replace(/[^(\d{1,3})(,\d{1,3})*(\.\d{1,})?$]/,'')" id="Cost" name="Cost" value="">
+                <span class="input-group-addon input-group-addon_custom">฿</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Priceperunit</label>
+            <div class="col-sm-10">
+              <div class="input-group">
+                <input [(ngModel)]="mProduct.priceperunit" pattern="number" class="form-control" type="number" onkeyup="this.value=this.value.replace(/[^(\d{1,3})(,\d{1,3})*(\.\d{1,})?$]/,'')" id="Priceperunit" name="Priceperunit" value="">
+                <span class="input-group-addon input-group-addon_custom">฿</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Quantity</label>
+            <div class="col-sm-10">
+
+              <div class="input-group">
+                <input [(ngModel)]="mProduct.qty" name="Qty" class="form-control" type="number" onkeyup="this.value=this.value.replace(/[^\d]/,'')" id="Qty" value="">
+                <span class="input-group-addon input-group-addon_custom">PCS.</span>
+              </div>
+            </div>
+
+          </div>
+
+
+
+          <!-- Upload Image -->
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Image</label>
+            <div class="col-sm-10">
+
+              <div class="input-group">
+                  <input type="file" (change)="uploadFile($event)"  />
+                  <div>{{ uploadPercent | async }}</div>
+                  <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+                  <br />
+                  <img [src]="downloadURL | async" height="100px"/>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="box-footer" style="margin-top:50px">
+        <input type="submit" value="Submit" class="btn btn-primary pull-right" (click)="onClickSubmit()" [routerLink]="['/stock']">
+        <a type="Button" class="btn btn-default pull-right" style="margin-right:10px" (click)="onClickCancel()">Cancel</a>
+      </div>
+    </div>
+  </section>
+  <!-- /.content -->
+
+</div>
+<app-footer></app-footer>
+<app-setting></app-setting>

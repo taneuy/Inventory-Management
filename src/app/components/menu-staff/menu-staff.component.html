@@ -1,0 +1,40 @@
+<aside class="main-sidebar">
+  <section class="sidebar">
+    <ul class="sidebar-menu" data-widget="tree">
+      <li class="header">MAIN NAVIGATION</li>
+      <li class="active treeview menu-open">
+        <a [routerLink]="['/sales']">
+          <i class="fab fa-product-hunt"></i> <span>&nbsp;Sale</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a [routerLink]="['/sales']" ><i class="fas fa-list-ul"></i> &nbsp;Product</a></li>
+          <!-- <li><a [routerLink]="['/stock_create']" ><i class="fas fa-plus-circle"></i> &nbsp;ADD PRODUCT</a></li> -->
+        </ul>
+        <a [routerLink]="['/stocks']">
+          <i class="fab fa-product-hunt"></i> <span>&nbsp;Product</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a [routerLink]="['/stocks']" ><i class="fas fa-list-ul"></i> &nbsp;ALL PRODUCT</a></li>
+          <!-- <li><a [routerLink]="['/stock_create']" ><i class="fas fa-plus-circle"></i> &nbsp;ADD PRODUCT</a></li> -->
+        </ul>
+        <!-- <a href="#">
+          <i class="fas fa-tags"></i> <span>&nbsp;Category</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a [routerLink]="['/category']" ><i class="fas fa-list-ul"></i> &nbsp;CATEGORY LIST</a></li>
+          <li><a [routerLink]="['/category_create']" ><i class="fas fa-plus-circle"></i> &nbsp;ADD CATEGORY</a></li>
+        </ul> -->
+      </li>
+    </ul>
+  </section>
+  <!-- /.sidebar -->
+</aside>

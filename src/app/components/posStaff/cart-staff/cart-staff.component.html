@@ -1,0 +1,32 @@
+<app-header></app-header>
+<app-menu></app-menu>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      ตะกร้าของคุณ
+    </h1>   
+  </section>
+  
+  <ul class="list-group mb-3">
+    <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let product of products">
+      <table style="width:100%">
+        <tr style="width:80%"><td>{{product.payload.name}}</td>
+        <td rowspan="2" style="text-align:right"> <img src="{{product.payload.imageUrl}}" height="120px"></td></tr>
+        <tr ><td>฿ {{product.payload.priceperunit}}</td></tr>
+        </table>
+    </li>
+    <hr>
+    <li class="list-group-item d-flex justify-content-between">
+      <span>Total</span>
+      <strong>  ฿    {{totalValue}}</strong>
+    </li>
+    <a class="btn btn-primary" [routerLink]="['/sale']">Continue Shopping</a>
+    <a class="btn btn-primary" (click)="clearcart()">Clear</a>
+    <a class="btn btn-default" (click)="checkout()">Checkout</a>
+  
+  </ul>
+  
+</div>
+<app-footer></app-footer>
+<app-setting></app-setting>

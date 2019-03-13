@@ -1,0 +1,59 @@
+<app-header></app-header>
+<app-menu></app-menu>
+
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <p class="box-title" style="font-size:30px">แก้ไขประเภทสินค้า</p>
+      </div>
+      <div class="box-body" style="margin-top:30px">
+        <form class="form-horizontal" method="Post" action="/product/Create">
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="Name">Name</label>
+            <div class="col-sm-10">
+              <input [(ngModel)]="mCategory.name" class="form-control" type="text" id="Name" name="Name" value="">
+            </div>
+          </div>
+<!-- 
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Quantity</label>
+            <div class="col-sm-10">
+
+              <div class="input-group">
+                <input [(ngModel)]="mProduct.qty" name="Qty" class="form-control">
+                <span class="input-group-addon input-group-addon_custom">PCS.</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Price</label>
+            <div class="col-sm-10">
+              <div class="input-group">
+                <input [(ngModel)]="mProduct.price" class="form-control" type="text" id="Price" name="Price" value="">
+                <span class="input-group-addon input-group-addon_custom">฿</span>
+              </div>
+            </div>
+          </div> -->
+
+        </form>
+      </div>
+      <div class="box-footer" style="margin-top:50px">
+        <input type="submit" value="Submit" class="btn btn-primary pull-right" (click)="onClickSubmit()">
+        <a type="Button" class="btn btn-default pull-right" style="margin-right:10px" (click)="onClickCancel()">Cancel</a>
+      </div>
+    </div>
+  </section>
+  <!-- /.content -->
+
+</div>
+
+<app-footer></app-footer>
+<app-setting></app-setting>

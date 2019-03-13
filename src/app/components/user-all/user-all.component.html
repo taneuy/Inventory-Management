@@ -1,0 +1,57 @@
+<app-header></app-header>
+<app-menu></app-menu>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+        รายการชื่อพนักงาน
+    </h1>   
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box" style="overflow-x:auto;">
+          <div class="box-body">
+            <table id="stock_table" class="table table-bordered table-striped table-hover" >
+              <thead>
+                <tr>
+                 <th style="width: 3%;">#ID</th>
+
+                 <!-- <th style="width: 2%;">Image</th> -->
+                 <th style="width: 45%;">Name</th>
+                 <th style="width:20%;">Email</th>
+                  <th style="width: 15%;">Status</th>
+                  <th style="width: 20%;">Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let item of (items | async)?.slice().reverse(); let i = index" style="font-size:14px;">
+                  <td>{{i+1}}</td>
+                  <!-- <td><img src="{{item.payload.val().imageUrl}}" height="80px;"></td> -->
+                  <td>{{item.payload.val().profile.firstName}} &nbsp; {{item.payload.val().profile.lastName}}</td>
+                  <td>{{item.payload.val().profile.email}}</td>
+                  <td>{{item.payload.val().status}}</td>
+                  <td>
+                      <div (click)="onClickDelete(item)" style="display: inline;">
+                        <i class="far fa-trash-alt" style="height: 15px; width: 15px; color: red;"></i>
+                      </div>
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+  </section>
+  <!-- /.content -->
+</div>
+<app-footer></app-footer>
+<app-setting></app-setting>

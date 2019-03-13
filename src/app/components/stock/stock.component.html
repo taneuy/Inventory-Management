@@ -1,0 +1,88 @@
+<app-header></app-header>
+<app-menu></app-menu>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+        รายการสินค้า
+    </h1>   
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box" style="overflow-x:auto;">
+          <div class="box-body">
+            <div class="row">
+              
+              <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                  <input (keyup)="onSearch($event)" type="search"  id="search_edit" class="form-control" value="" placeholder="Search by name">                    
+              </div>
+                            
+              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">                                
+                <button (click)="onClickAdd()" style="margin-bottom: 24px; width: 100%;" class="btn btn-primary pull-right">เพิ่ม</button>                  
+              </div>
+            </div>
+
+            <table id="stock_table" class="table table-bordered table-striped table-hover" >
+              <thead>
+                <tr>
+                 <th style="width: 3%;">#ID</th>
+
+                 <th style="width: 2%;">Image</th>
+                 <th style="width: 5%;">Category</th>
+                 <th style="width:5%;">Barcode</th>
+
+                  <th style="width: 45%;">Name</th>
+                  <th style="width: 5%;">Brand</th>
+                  <th style="width: 5%;">Package</th>
+                  <th style="width: 5%;">Cost</th>
+                  <th style="width: 5%;">PricePerUnit</th>
+                  <th style="width: 5%;">Quantity</th>
+                  <th style="width: 15%;">ACTION</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let item of (items | async)?.slice().reverse(); let i = index" style="font-size:14px;">
+                  <td>{{i+1}}</td>
+                  <td><img src="{{item.payload.val().imageUrl}}" height="80px;"></td>
+                  <!-- <td>{{item.payload.val().category}}</td> -->
+                  <td>{{item.payload.val().category}}</td>
+                  <td>{{item.payload.val().barcode}}</td>
+                  <td>{{item.payload.val().name}}</td>
+                  <td>{{item.payload.val().brand}}</td>
+                  <td>{{item.payload.val().package}}</td>
+                  <td>{{item.payload.val().cost | number}}</td>
+                  <td>{{item.payload.val().priceperunit | number}}</td>
+                  <td>{{item.payload.val().qty | number}}</td>
+                  <td>
+
+
+                    <div (click)="onClickEdit(item)" style="display: inline;">
+                        <i class="far fa-edit" style="height: 15px; width: 15px; color: blue;"></i>
+                    </div>
+                      <div (click)="onClickAddQty(item)" style="display: inline;">
+                      <i class="fas fa-plus-circle" style="height: 15px; width: 15px; color:greenyellow;"></i>
+                      </div>
+                      <div (click)="onClickDelete(item)" style="display: inline;">
+                        <i class="far fa-trash-alt" style="height: 15px; width: 15px; color: red;"></i>
+                      </div>
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+  </section>
+  <!-- /.content -->
+</div>
+<app-footer></app-footer>
+<app-setting></app-setting>

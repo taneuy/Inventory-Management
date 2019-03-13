@@ -1,0 +1,48 @@
+<app-header></app-header>
+<app-menu></app-menu>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+        รายการสินค้า
+    </h1>   
+    <button (click) ="cart()"> Cart </button>
+    <a class="btn btn-primary" (click)="clearcart()">Clear</a>
+  </section>
+  <br>
+  <div class="col-xs-12">
+
+    <div class="container">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <input (keyup)="onSearch($event)" type="search"  id="search_edit" class="form-control" value="" placeholder="Search by barcode">                    
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <input (keyup.enter)="onSearch2(fi)"  id="search" class="form-control" value="" placeholder="Search " [(ngModel)]="fi">                    
+              </div>
+                <br>
+                <br>
+            <div class="col-sm-2 mb-2" *ngFor="let item of (items | async)?.slice().reverse();">
+                    <mat-card class="example-card">
+                            <mat-card-header>
+                              <!-- <div mat-card-avatar class="example-header-image"></div> -->
+                              <mat-card-title>{{item.payload.val().name}}</mat-card-title>
+                              <mat-card-subtitle>{{item.payload.val().category}}</mat-card-subtitle>
+                            </mat-card-header>
+                            <img mat-card-image src="{{item.payload.val().imageUrl}}">
+                            <mat-card-content>
+                              <p> Barcode {{item.payload.val().barcode}}</p> 
+                              <p> Price {{item.payload.val().priceperunit | number}} ฿</p> 
+                            </mat-card-content>
+                            <mat-card-actions>
+                                          <a  (click)="addToCart(item)">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            </a>
+                            </mat-card-actions>
+                          </mat-card>
+    </div>
+
+    </div>
+</div>
+</div>
+<app-footer></app-footer>
+<app-setting></app-setting>

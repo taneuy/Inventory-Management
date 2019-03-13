@@ -1,0 +1,10 @@
+.example-card {
+    max-width: 300px;
+    max-height: 400px;
+  }
+  
+.mat-card-image{
+    height: auto;
+    width: 50px;
+    margin: auto;
+}

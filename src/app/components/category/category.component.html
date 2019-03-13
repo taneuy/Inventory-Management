@@ -1,0 +1,69 @@
+<app-header></app-header>
+  <app-menu></app-menu>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+        ประเภทสินค้า
+    </h1>   
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-body">
+            <div class="row">
+              
+              <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                  <input (keyup)="onSearch($event)" type="search"  id="search_edit" class="form-control" value="" placeholder="Search by name">                    
+              </div>
+                            
+              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">                                
+                <button (click)="onClickAdd()" style="margin-bottom: 24px; width: 100%;" class="btn btn-primary pull-right">เพิ่ม</button>                  
+              </div>
+              
+                
+            </div>
+            
+            
+            
+            <table id="stock_table" class="table table-bordered table-striped table-hover" >
+              <thead>
+                <tr>
+                 <th style="width: 3%;">#ID</th>
+                  <th style="width: 50%;">Name</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let item of (items | async)?.slice().reverse(); let i = index" style="font-size:20px;">
+                  <td>{{i+1}}</td>
+                  <td>{{item.payload.val().name}}</td>
+                  <td>
+
+                    <div (click)="onClickDelete(item)" style="display: inline;">
+                      <i class="far fa-trash-alt" style="height: 40px; width: 40px; color: red;"></i>
+                    </div>
+                    <div (click)="onClickEdit(item)" style="display: inline;">
+                        <i class="far fa-edit" style="height: 40px; width: 40px; color: blue;"></i>
+                    </div>
+                      
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+  </section>
+  <!-- /.content -->
+</div>
+<app-footer></app-footer>
+<app-setting></app-setting>
